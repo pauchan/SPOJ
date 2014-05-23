@@ -6,7 +6,7 @@ void parseExpression(const char *expression);
 typedef struct varStack
 {
   int stackCounter;
-  char stack[400];
+  char stack[1000];
 }varStack;
 
 varStack *createStack()
@@ -62,18 +62,19 @@ int main()
   scanf("%d\n",&t);
   while(t--)
     {
-      char c[400];
-      fgets(c, 400, stdin);
+      char c[1000];
+      fgets(c, 1000, stdin);
       //printf("%s\n",c);
       parseExpression(c);
     }
+    return 0;
 }
 
 void parseExpression(const char *expression)
 {
   int i=0,j=0;
   varStack *vars = createStack();
-  char output[400];
+  char output[1000];
   while(expression[i]!='\0')
   {
     if((96 < (int)expression[i]) && (expression[i] < 123))
